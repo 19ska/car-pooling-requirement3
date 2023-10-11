@@ -43,10 +43,10 @@ public class Valid {
 
                 case 3:
                     System.out.print("Enter driving license issue date (dd-MM-yyyy): ");
-                    String expiryDateStr = scanner.nextLine();
+                    String issueDateStr = scanner.nextLine();
                     try {
-                        Date expiryDate = dateFormat.parse(expiryDateStr);
-                        if (isDrivingLicenseValid(currentDate, expiryDate)) {
+                        Date issueDate = dateFormat.parse(issueDateStr);
+                        if (isDrivingLicenseValid(currentDate, issueDate)) {
                             System.out.println("Valid driving license.");
                         } else {
                             System.out.println("Expired driving license.");
@@ -70,9 +70,9 @@ public class Valid {
 
     
     // Check the validity of a driving license
-    private static boolean isDrivingLicenseValid(Date currentDate, Date expiryDate) {
+    private static boolean isDrivingLicenseValid(Date currentDate, Date issueDate) {
         long validityPeriod = 10 * 365 * 24 * 60 * 60 * 1000L; // 10 years in milliseconds
-        return (currentDate.getTime() <= (expiryDate.getTime() + validityPeriod));
+        return (currentDate.getTime() <= (issueDate.getTime() + validityPeriod));
     }
 }
 
